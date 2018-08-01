@@ -12,6 +12,7 @@
 		09DA64D7210F978400F557F2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09DA64D5210F978400F557F2 /* Main.storyboard */; };
 		09DA64D9210F978700F557F2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 09DA64D8210F978700F557F2 /* Assets.xcassets */; };
 		09DA64DC210F978700F557F2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09DA64DA210F978700F557F2 /* LaunchScreen.storyboard */; };
+		7E8C305F6C6F49A17F9EC29E /* Pods_Saurabh_CF.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99DCB0E19FCA3FC3467627FA /* Pods_Saurabh_CF.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,9 @@
 		09DA64D8210F978700F557F2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		09DA64DB210F978700F557F2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		09DA64DD210F978700F557F2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		955E4AEC688C4A9630A1A99F /* Pods-Saurabh_CF.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Saurabh_CF.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Saurabh_CF/Pods-Saurabh_CF.debug.xcconfig"; sourceTree = "<group>"; };
+		99DCB0E19FCA3FC3467627FA /* Pods_Saurabh_CF.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Saurabh_CF.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D2079C74590ADB5529A53D8C /* Pods-Saurabh_CF.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Saurabh_CF.release.xcconfig"; path = "Pods/Target Support Files/Pods-Saurabh_CF/Pods-Saurabh_CF.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +33,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7E8C305F6C6F49A17F9EC29E /* Pods_Saurabh_CF.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +45,8 @@
 			children = (
 				09DA64D0210F978400F557F2 /* Saurabh_CF */,
 				09DA64CF210F978400F557F2 /* Products */,
+				49DE73212F930527C748DBFD /* Pods */,
+				83418BF1CC790EDE96431DA6 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -64,6 +71,23 @@
 			path = Saurabh_CF;
 			sourceTree = "<group>";
 		};
+		49DE73212F930527C748DBFD /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				955E4AEC688C4A9630A1A99F /* Pods-Saurabh_CF.debug.xcconfig */,
+				D2079C74590ADB5529A53D8C /* Pods-Saurabh_CF.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		83418BF1CC790EDE96431DA6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				99DCB0E19FCA3FC3467627FA /* Pods_Saurabh_CF.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -71,9 +95,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 09DA64E0210F978700F557F2 /* Build configuration list for PBXNativeTarget "Saurabh_CF" */;
 			buildPhases = (
+				6E9DD4507E571F3DFDEF4CCA /* [CP] Check Pods Manifest.lock */,
 				09DA64CA210F978400F557F2 /* Sources */,
 				09DA64CB210F978400F557F2 /* Frameworks */,
 				09DA64CC210F978400F557F2 /* Resources */,
+				FF1174BFCD6045754B5873A7 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -129,6 +155,45 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		6E9DD4507E571F3DFDEF4CCA /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Saurabh_CF-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FF1174BFCD6045754B5873A7 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Saurabh_CF/Pods-Saurabh_CF-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Starscream/Starscream.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Starscream.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Saurabh_CF/Pods-Saurabh_CF-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		09DA64CA210F978400F557F2 /* Sources */ = {
@@ -278,11 +343,13 @@
 		};
 		09DA64E1210F978700F557F2 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 955E4AEC688C4A9630A1A99F /* Pods-Saurabh_CF.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = WAGXRCHGD8;
 				INFOPLIST_FILE = Saurabh_CF/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -296,11 +363,13 @@
 		};
 		09DA64E2210F978700F557F2 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D2079C74590ADB5529A53D8C /* Pods-Saurabh_CF.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = WAGXRCHGD8;
 				INFOPLIST_FILE = Saurabh_CF/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

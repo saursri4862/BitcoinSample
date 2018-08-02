@@ -30,6 +30,9 @@ class ViewController: UIViewController, WebSocketDelegate {
     
     var timer:Timer!
     
+    var sgt:Int = 2000000
+    var newTrans:Double = 0.0
+    var currentRate:Double = 0.0
     var hideConnectingView = false
     
     @objc func animateView(){
@@ -90,7 +93,7 @@ class ViewController: UIViewController, WebSocketDelegate {
         timer = Timer.scheduledTimer(timeInterval: 5.0, target: self, selector: #selector(animateView), userInfo: nil, repeats: false)
     }
     func websocketDidReceiveMessage(socket: WebSocketClient, text: String) {
-        //print(text)
+    //    print(text)
         let data = convertToDictionary(text: text)
         if data != nil{
             if let op = data!["op"] as? String{
@@ -124,15 +127,58 @@ class ViewController: UIViewController, WebSocketDelegate {
     
     func updateTransactions(_ data:[String:Any]){
         if let dict = data["x"] as? [String:Any]{
+            if let outDict = dict["out"] as? [[String:Any]]{
+                if outDict.count > 0{
+                if let value = outDict[0]["value"] as? Int{
+                    if value > sgt{
+                        newTrans = Double(value)/Double(100000000)
+                        getBitcoinrate()
+                    }
+                    else{
+                        return
+                    }
+                }
+                }
+            }
             if let sent = dict["hash"] as? String{
                 transHash.text = String(sent)
-            }
-            if let sent = dict["size"] as? Int{
-                transAmount.text = String(sent)
             }
         }
     }
     
+    func getBitcoinrate(){
+        let url = URL(string: "https://api.coindesk.com/v1/bpi/currentprice.json")!
+        let request = URLRequest(url: url)
+        
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let data = data, error == nil else {
+                return
+            }
+            do{
+                
+                if let json = try JSONSerialization.jsonObject(with: data) as? [String: Any]{
+                    print(json)
+                    if let bpi = json["bpi"] as? [String:Any]{
+                        if let us = bpi["USD"] as? [String:Any]{
+                            if let rate = us["rate_float"] as? Double{
+                                self.currentRate = Double(rate)
+                            }
+                        }
+                    }
+                    DispatchQueue.main.async {
+                        let total = self.newTrans*self.currentRate
+                        self.transAmount.text = String(total)+" USD"
+                    }
+                    
+                    
+                }
+            }
+            catch{
+                
+            }
+        }
+        task.resume()
+    }
     func websocketDidReceiveData(socket: WebSocketClient, data: Data) {
        // print(data)
     }
